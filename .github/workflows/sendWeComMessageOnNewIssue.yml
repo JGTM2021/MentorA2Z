@@ -1,0 +1,15 @@
+name: Send WeCom message on new issue
+
+on: [issues]
+
+jobs:
+
+  detect-issue:
+
+    runs-on: ubuntu-latest
+
+    steps:
+     - run: |
+        curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=da88588e-a2b1-47a2-aab7-2c519fd73f16' \
+        -H 'Content-Type: application/json' \
+        -d '{ "msgtype": "text", "text": { "content":"New Issue: https://github.com/JGTM2021/ParentA2Z-for-Android/issues" } }'
